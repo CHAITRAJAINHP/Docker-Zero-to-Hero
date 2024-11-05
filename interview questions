@@ -11,3 +11,14 @@ Ans.
 2. Ensure that networking is configured properly. If required configure custom bridge network and assign them to isolate networks. Create different bridge network for finance application.
 
 3. Use utilities like Sync to scan your container images. Before you push them to production or staging environment.
+
+
+Question. What is multi stage build in docker ?
+Ans. Concept of container itself is to keep it lightweight. 
+Multi stage build allows you to build your docker container in multiple stages allowing you to copy artifacts from one stage to other. The major advantages of this is to build light weight containers. All dependencies and heavy base image were required only in build stage 
+Final application build artifact(jar file) requires only Java runtime, not the dependencies required to build the application.
+So, final image size will drop from 800 MB to 20 mb.
+
+Ques. What are distroless images in docker 
+Ans. Containers are also  exposed to security vulnerabilities, cuz they are minimal os, still. Some images such as ubuntu comes with os related vulnerabilities or MySQL related dependencies.
+To solve this, image size was further shrunk. Distroless image are very very minimal such as scratch are hardly 1-2 mb. Instead of base image use distroless image. You don't even have basic command such as apt.
